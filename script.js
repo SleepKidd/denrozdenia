@@ -35,6 +35,42 @@
   }, { passive: true });
   progress();
 
+  const glow = $('#cursor-glow');
+  let pointerX = -300, pointerY = -300, glowX = -300, glowY = -300;
+  function followPointer() {
+    glowX += (pointerX - glowX) * .14;
+    glowY += (pointerY - glowY) * .14;
+    glow.style.transform = `translate3d(${glowX - 90}px,${glowY - 90}px,0)`;
+    if (!reduced.matches && matchMedia('(pointer:fine)').matches) requestAnimationFrame(followPointer);
+  }
+  if (!reduced.matches && matchMedia('(pointer:fine)').matches) {
+    addEventListener('pointermove', (event) => {
+      pointerX = event.clientX; pointerY = event.clientY;
+      const art = document.querySelector('.hero-art');
+      if (art && scrollY < innerHeight) {
+        const x = (event.clientX / innerWidth - .5) * 12;
+        const y = (event.clientY / innerHeight - .5) * 9;
+        art.style.translate = `${x}px ${y}px`;
+      }
+    }, { passive: true });
+    requestAnimationFrame(followPointer);
+  }
+  function sprinkle(x, y, amount = 7) {
+    if (reduced.matches) return;
+    for (let i = 0; i < amount; i++) {
+      const star = document.createElement('span');
+      star.className = 'spark'; star.textContent = i % 3 ? '✧' : '♡';
+      star.style.left = `${x}px`; star.style.top = `${y}px`;
+      star.style.setProperty('--sx', `${(Math.random() - .5) * 110}px`);
+      star.style.setProperty('--sy', `${(Math.random() - .5) * 110}px`);
+      document.body.append(star); setTimeout(() => star.remove(), 900);
+    }
+  }
+  document.addEventListener('pointerdown', (event) => {
+    if (event.button !== undefined && event.button !== 0) return;
+    sprinkle(event.clientX, event.clientY, innerWidth < 700 ? 4 : 7);
+  }, { passive: true });
+
   const lightbox = $('#lightbox');
   let photoIndex = 0;
   function showPhoto(index) {
@@ -93,7 +129,19 @@
     'Желаю тебе больше времени жить, а не только успевать.',
     'Пусть всё, что начинается в этом году твоей жизни, ведёт к чему-то доброму.',
     'Пусть подарки приятно удивляют, цветы появляются без повода, а любовь не требует доказательств.',
-    'Оля, пусть жизнь будет щедра к тебе. На любовь, возможности и счастливые случайности.'
+    'Оля, пусть жизнь будет щедра к тебе. На любовь, возможности и счастливые случайности.',
+    'Пусть новый год твоей жизни окажется добрее, спокойнее и счастливее предыдущего.',
+    'Желаю, чтобы самые тревожные мысли всё чаще заканчивались словами: «А всё ведь получилось».',
+    'Пусть тебе никогда не приходится уменьшать себя, чтобы кому-то рядом было удобнее.',
+    'Желаю получать именно те подарки, о которых неловко просить, но очень хочется.',
+    'Пусть каждый трудный период обязательно приводит тебя в место, где становится легче.',
+    'Желаю любимых песен в наушниках, тёплого ветра и ощущения, что ты точно на своём месте.',
+    'Пусть вокруг тебя собираются люди, которые не только говорят, но и действительно остаются.',
+    'Желаю финансового спокойствия, приятных покупок и путешествий без подсчёта каждой копейки.',
+    'Пусть всё хорошее, что ты даришь другим, возвращается к тебе в двойном размере.',
+    'Желаю никогда не сомневаться: ты достойна заботы, уважения и огромной любви.',
+    'Пусть жизнь почаще удивляет тебя именно так, как ты любишь.',
+    'С днём рождения, Оля. Пусть впереди будет очень много твоего личного «счастливо».'
   ];
   let wishIndex = 0;
   $('#wish-button').addEventListener('click', () => {
@@ -103,6 +151,19 @@
     text.classList.remove('wish-pop');
     void text.offsetWidth;
     text.classList.add('wish-pop');
+    const rect = $('#wish-button').getBoundingClientRect();
+    sprinkle(rect.left + rect.width / 2, rect.top + rect.height / 2, innerWidth < 700 ? 9 : 15);
+    if (!reduced.matches) {
+      for (let i = 0; i < (innerWidth < 700 ? 4 : 7); i++) {
+        const heart = document.createElement('span');
+        heart.className = 'heart-float'; heart.textContent = i % 2 ? '♡' : '✧';
+        heart.style.left = `${rect.left + rect.width / 2 + (Math.random() - .5) * 70}px`;
+        heart.style.top = `${rect.top + 15}px`;
+        heart.style.setProperty('--drift', `${(Math.random() - .5) * 100}px`);
+        heart.style.setProperty('--turn', `${(Math.random() - .5) * 55}deg`);
+        document.body.append(heart); setTimeout(() => heart.remove(), 2700);
+      }
+    }
   });
 
   // Vector particles scale with device pixels. A fixed particle budget keeps
@@ -161,17 +222,32 @@
   function celebrate() {
     $('#celebrate-message').textContent = 'Пусть сбудется. С днём рождения, Оля! ♡';
     $('#celebrate').innerHTML = 'Ещё немного волшебства <span>✧</span>';
+    const toast = $('#final-toast');
+    toast.classList.remove('show'); void toast.offsetWidth; toast.classList.add('show');
     if (reduced.matches) return;
     // Bound memory even when the button is pressed repeatedly.
     const count = width < 700 ? 110 : 200;
     bursts = bursts.slice(-240);
     for (let i = 0; i < count; i++) {
       const angle = Math.random() * Math.PI * 2, speed = 2 + Math.random() * 7;
-      bursts.push({ x: width * (.25 + Math.random() * .5), y: height * .4,
+      const origin = i % 3;
+      bursts.push({ x: width * ([.28,.5,.72][origin] + (Math.random() - .5) * .08), y: height * (.32 + Math.random() * .2),
         vx: Math.cos(angle) * speed, vy: Math.sin(angle) * speed - 3,
         life: 140 + Math.random() * 100, size: 3 + Math.random() * 5,
         rotation: Math.random() * 6, spin: (Math.random() - .5) * .13,
         color: palette[i % palette.length], star: i % 4 === 0 });
+    }
+    const buttonRect = $('#celebrate').getBoundingClientRect();
+    sprinkle(buttonRect.left + buttonRect.width / 2, buttonRect.top + buttonRect.height / 2, 28);
+    for (let i = 0; i < (width < 700 ? 14 : 28); i++) {
+      setTimeout(() => {
+        const heart = document.createElement('span');
+        heart.className = 'heart-float'; heart.textContent = i % 3 ? '♡' : '✦';
+        heart.style.left = `${Math.random() * width}px`; heart.style.top = `${height - 20}px`;
+        heart.style.setProperty('--drift', `${(Math.random() - .5) * 160}px`);
+        heart.style.setProperty('--turn', `${(Math.random() - .5) * 90}deg`);
+        document.body.append(heart); setTimeout(() => heart.remove(), 2700);
+      }, i * 45);
     }
   }
   $('#celebrate').addEventListener('click', celebrate);
