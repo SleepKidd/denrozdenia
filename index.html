@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f8f3eb"><meta name="description" content="Оля, с днём рождения! Немного волшебства, любимые фотографии и самые тёплые пожелания — только для тебя.">
+  <title>Оля, этот день — твой ♡</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='18' fill='%23912540'/%3E%3Cpath d='M32 49S9 35 12 23c3-11 17-10 20 0 3-10 17-11 20 0 3 12-20 26-20 26' fill='%23f8f3eb'/%3E%3C/svg%3E">
+  <link rel="preload" href="assets/fonts/font-0.ttf" as="font" type="font/ttf" crossorigin>
+  <link rel="stylesheet" href="assets/fonts.css"><link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+<a class="skip-link" href="#main">К поздравлению</a>
+<canvas id="magic" aria-hidden="true"></canvas>
+<div class="page-progress" aria-hidden="true"></div>
+<header class="header">
+  <a class="brand" href="#home" aria-label="Оля — в начало">Оля<span>♡</span></a>
+  <nav aria-label="Основная навигация"><a href="#moments">Моменты</a><a href="#wishes">Пожелания</a><a href="#letter">Для тебя</a></nav>
+  <button class="sound-button" id="sound" aria-pressed="false" aria-label="Включить музыку"><span class="sound-bars" aria-hidden="true"><i></i><i></i><i></i><i></i></span><span class="sound-label">Музыка</span></button>
+</header>
+<main id="main">
+<section class="hero" id="home" aria-labelledby="hero-title">
+  <div class="hero-copy"><p class="eyebrow"><span></span> СЕГОДНЯ МИР НЕМНОГО ПРЕКРАСНЕЕ</p>
+    <h1 id="hero-title">С днём<br>рождения,<br><em>Оля!</em><span class="hero-star" aria-hidden="true">✧</span></h1>
+    <p class="hero-description">Пусть жизнь обнимает тебя так же тепло,<br class="desktop-break"> как хочется обнять тебя сегодня.</p>
+    <a class="button primary" href="#letter">Для тебя, от всего сердца <span>↗</span></a>
+    <p class="small-note">Здесь всё — про тебя и для тебя <span>♡</span></p>
+  </div>
+  <div class="hero-art">
+    <span class="orbit orbit-one" aria-hidden="true"></span><span class="orbit orbit-two" aria-hidden="true"></span>
+    <span class="handwritten hero-caption">твоя улыбка —<br>маленькое солнце</span>
+    <button class="photo hero-photo main-photo" data-photo="1" aria-label="Открыть фото Оли с букетом"><img src="assets/photos/olya-02.webp" alt="Оля с ярким букетом цветов" width="914" height="1280" fetchpriority="high"><span>самый красивый повод для праздника</span></button>
+    <button class="photo hero-photo small-photo" data-photo="0" aria-label="Открыть портрет Оли"><img src="assets/photos/olya-01.webp" alt="Портрет Оли" width="960" height="1280"><span>just be you ♡</span></button>
+    <div class="seal" aria-hidden="true"><span>С ЛЮБОВЬЮ</span><b>♡</b><span>ТОЛЬКО ТЕБЕ</span></div>
+    <span class="art-star star-one" aria-hidden="true">✳</span><span class="art-star star-two" aria-hidden="true">✧</span>
+  </div>
+  <a href="#moments" class="scroll-hint"><span>↓</span> ЛИСТАЙ, ЗДЕСЬ ЕЩЁ МНОГО ТЕПЛА</a>
+</section>
+<div class="ticker" aria-label="Счастья, любви, волшебства и исполнения желаний"><div class="ticker-track"><span>сияй по-своему</span><i>✧</i><span>будь счастлива</span><i>✧</i><span>мечтай смелее</span><i>✧</i><span>ты прекрасна</span><i>✧</i><span>люби эту жизнь</span><i>✧</i><span aria-hidden="true">сияй по-своему</span><i aria-hidden="true">✧</i><span aria-hidden="true">будь счастлива</span><i aria-hidden="true">✧</i><span aria-hidden="true">мечтай смелее</span><i aria-hidden="true">✧</i><span aria-hidden="true">ты прекрасна</span><i aria-hidden="true">✧</i><span aria-hidden="true">люби эту жизнь</span><i aria-hidden="true">✧</i></div></div>
+<section class="moments section" id="moments" aria-labelledby="moments-title">
+  <div class="section-top reveal"><div><p class="eyebrow">01 / ТВОЯ МАЛЕНЬКАЯ ВСЕЛЕННАЯ</p><h2 id="moments-title">Так много света.<br>И всё это — <em>ты.</em></h2></div><p class="section-description">Разная. Настоящая. Неповторимая.<br>Пусть впереди будет ещё больше моментов,<br>которые хочется сохранить.</p></div>
+  <div class="gallery">
+    <button class="gallery-card reveal" data-photo="0"><img src="assets/photos/olya-01.webp" alt="Оля в оливковой рубашке" width="960" height="1280" loading="lazy"><span><i>01</i> Быть собой <b>↗</b></span></button>
+    <button class="gallery-card reveal" data-photo="1"><img src="assets/photos/olya-02.webp" alt="Оля с букетом разноцветных роз" width="914" height="1280" loading="lazy"><span><i>02</i> Расцветать <b>↗</b></span></button>
+    <button class="gallery-card reveal" data-photo="2"><img src="assets/photos/olya-03.webp" alt="Оля на фоне осеннего декора" width="1003" height="1280" loading="lazy"><span><i>03</i> Ловить мгновения <b>↗</b></span></button>
+    <button class="gallery-card reveal" data-photo="3"><img src="assets/photos/olya-04.webp" alt="Оля в блузке в горошек" width="959" height="1280" loading="lazy"><span><i>04</i> Улыбаться миру <b>↗</b></span></button>
+    <button class="gallery-card reveal" data-photo="4"><img src="assets/photos/olya-05.webp" alt="Портрет Оли в светлой рубашке" width="841" height="1280" loading="lazy"><span><i>05</i> Чувствовать <b>↗</b></span></button>
+    <button class="gallery-card reveal" data-photo="5"><img src="assets/photos/olya-06.webp" alt="Оля с поднятыми руками" width="791" height="1280" loading="lazy"><span><i>06</i> Мечтать без границ <b>↗</b></span></button>
+    <button class="gallery-card reveal" data-photo="6"><img src="assets/photos/olya-07.webp" alt="Оля в бордовом наряде" width="889" height="1280" loading="lazy"><span><i>07</i> Сиять <b>↗</b></span></button>
+    <div class="gallery-quote reveal"><span aria-hidden="true">✧</span><p>Самое красивое,<br>что ты можешь<br>носить, —<br><em>своё счастье.</em></p><small>И пусть оно тебе очень идёт.</small></div>
+  </div>
+  <p class="gallery-hint">Нажми на фотографию, чтобы рассмотреть её ближе <span>↗</span></p>
+</section>
+<section class="wishes section" id="wishes" aria-labelledby="wishes-title">
+  <div class="section-top reveal"><div><p class="eyebrow">02 / ПУСТЬ ВСЁ ХОРОШЕЕ СЛУЧАЕТСЯ</p><h2 id="wishes-title">Не просто слова.<br><em>От всей души.</em></h2></div><p class="section-description">Некоторые пожелания хочется<br>обнять и забрать с собой.<br>Эти — как раз такие.</p></div>
+  <div class="wishes-grid">
+    <article class="wish-card reveal"><span class="wish-icon">☼</span><span class="wish-number">01</span><h3>Счастья без повода</h3><p>Не только по праздникам. А в обычный вторник, в любимой песне, в добром сообщении и в утре, когда никуда не нужно спешить.</p></article>
+    <article class="wish-card reveal"><span class="wish-icon">♡</span><span class="wish-number">02</span><h3>Любви, в которой тепло</h3><p>Пусть рядом будут люди, с которыми можно смеяться до слёз, молчать без неловкости и всегда оставаться собой.</p></article>
+    <article class="wish-card reveal"><span class="wish-icon">✧</span><span class="wish-number">03</span><h3>Мечт, которые сбываются</h3><p>Даже тех, о которых пока говоришь шёпотом. Пусть однажды твоё «вот бы» превратится в счастливое «неужели это со мной!».</p></article>
+    <article class="wish-card reveal"><span class="wish-icon">❋</span><span class="wish-number">04</span><h3>Сил и спокойствия</h3><p>Здоровья тебе и твоим близким. Сил на любимые дела, времени на отдых и уверенности: с трудностями не нужно справляться в одиночку.</p></article>
+    <article class="wish-card reveal"><span class="wish-icon">↗</span><span class="wish-number">05</span><h3>Красивых новых историй</h3><p>Спонтанных поездок, долгих разговоров, удивительных встреч и мест, где хочется остановиться и сказать: «Как же хорошо!».</p></article>
+    <article class="wish-card reveal"><span class="wish-icon">∞</span><span class="wish-number">06</span><h3>Свободы быть собой</h3><p>Выбирать то, что радует именно тебя. Не откладывать жизнь на потом. Передумывать, пробовать, начинать заново — и быть на своей стороне.</p></article>
+  </div>
+  <div class="wish-draw reveal"><span class="little-star" aria-hidden="true">✧</span><div><p class="eyebrow">ЕЩЁ ОДНО ПОЖЕЛАНИЕ — ТОЛЬКО ТЕБЕ</p><p id="random-wish" aria-live="polite">Пусть хороших новостей всегда будет больше, чем непрочитанных сообщений.</p></div><button id="wish-button" class="circle-button" aria-label="Получить ещё одно пожелание">↗</button></div>
+</section>
+<section class="letter-section section" id="letter" aria-labelledby="letter-title">
+  <div class="letter-intro reveal"><p class="eyebrow">03 / САМОЕ ГЛАВНОЕ</p><h2 id="letter-title">Есть слова,<br>которые хочется<br>сказать <em>лично.</em></h2><p>Оля, это маленькое письмо тебе.<br>Открой — внутри много тепла.</p><span class="handwritten">от самого сердца ↘</span></div>
+  <div class="envelope-wrap reveal"><button class="envelope" id="open-letter" aria-haspopup="dialog"><span class="envelope-fold" aria-hidden="true"></span><span class="envelope-to">Для Оли</span><span class="wax-seal" aria-hidden="true">♡</span><span class="envelope-bottom">ОТКРЫТЬ ПИСЬМО ↗</span></button><span class="letter-decoration" aria-hidden="true">✧</span></div>
+</section>
+<section class="world section" aria-labelledby="world-title"><p class="eyebrow reveal">04 / НА ЛЮБОМ ЯЗЫКЕ — С ЛЮБОВЬЮ</p><h2 class="reveal" id="world-title">Сегодня весь мир<br>звучит <em>для тебя.</em></h2><div class="world-phrases reveal"><p lang="en">Happy birthday, Olya! <small>АНГЛИЙСКИЙ</small></p><p lang="fr">Joyeux anniversaire ! <small>ФРАНЦУЗСКИЙ</small></p><p lang="it">Buon compleanno! <small>ИТАЛЬЯНСКИЙ</small></p><p lang="es">¡Feliz cumpleaños! <small>ИСПАНСКИЙ</small></p><p lang="de">Alles Gute zum Geburtstag! <small>НЕМЕЦКИЙ</small></p><p>С днём рождения, Оля! <small>И ОТ ВСЕГО СЕРДЦА ♡</small></p></div></section>
+<section class="finale section" id="magic-moment" aria-labelledby="finale-title"><div class="finale-orbit" aria-hidden="true"></div><p class="eyebrow reveal">05 / МАЛЕНЬКОЕ ВОЛШЕБСТВО</p><span class="finale-star" aria-hidden="true">✧</span><h2 class="reveal" id="finale-title">А теперь —<br><em>загадай желание.</em></h2><p class="reveal">То самое. Самое важное.<br>Пусть у него обязательно всё получится.</p><button class="button primary" id="celebrate">Загадала! <span>✧</span></button><p class="celebrate-message" id="celebrate-message" aria-live="polite">Маленькая кнопка для большого чуда</p></section>
+</main>
+<footer><a class="brand" href="#home">Оля<span>♡</span></a><p>Ты — прекрасный повод сделать этот мир чуть теплее.</p><span>С днём рождения!</span></footer>
+<dialog id="lightbox" class="lightbox" aria-label="Фотографии Оли"><button class="dialog-close" data-close aria-label="Закрыть фотографии">×</button><button class="lightbox-prev" id="photo-prev" aria-label="Предыдущее фото">←</button><figure><img id="lightbox-image" alt=""><figcaption id="photo-caption"></figcaption></figure><button class="lightbox-next" id="photo-next" aria-label="Следующее фото">→</button><p class="lightbox-hint">← → &nbsp; Листай фотографии &nbsp; · &nbsp; Esc — закрыть</p></dialog>
+<dialog id="letter-dialog" class="letter-dialog" aria-labelledby="personal-letter-title"><button class="dialog-close" data-close aria-label="Закрыть письмо">×</button><p class="eyebrow">ПИСЬМО, В КОТОРОМ МНОГО ТЕПЛА</p><h2 id="personal-letter-title">Дорогая <em>Оля,</em></h2><p>с днём рождения тебя! Очень хочется, чтобы сегодня ты почувствовала, сколько тепла можно вложить в простое «как здорово, что ты есть».</p><p>Пусть в твоей жизни будет много любви — спокойной, настоящей, без необходимости что-то заслуживать. Пусть тебя слышат, берегут и обнимают именно тогда, когда это нужно.</p><p>Желаю тебе просыпаться с интересом к новому дню. Находить время для себя. Смеяться так, чтобы болели щёки. Встречать людей, после которых на душе светлее. И смело идти туда, куда давно зовёт сердце.</p><p>Пусть всё, что тревожит, постепенно отпускает. Пусть хватает здоровья, сил и возможностей на то, что для тебя важно. А рядом всегда будет тот, кому можно сказать и «у меня получилось!», и «мне сейчас непросто».</p><p>Не нужно быть идеальной, чтобы быть любимой. Не нужно ждать особенного повода, чтобы радовать себя. Этот день — твой. И вся удивительная жизнь впереди — тоже.</p><p class="letter-ending">Будь счастлива. По-настоящему.<br>И обязательно по-своему.</p><span class="handwritten">С теплом и от всей души ♡</span></dialog>
+</body>
+</html>
